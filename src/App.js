@@ -11,7 +11,6 @@ import {
 const App = () => {
   const [score, setScore] = useState(new ScoreObj(0, 0));
   const [level, setLevel] = useState(1);
-  const [levelRounds, setLevelRounds] = useState(levelToCardNum(level));
   const [scoreStartLevel, setScoreStartLevel] = useState(0);
 
   const checkAnswer = (event) => {
@@ -20,19 +19,20 @@ const App = () => {
 
       if (score.current > levelRounds + scoreStartLevel - 2) {
         setLevel(level + 1);
-        setLevelRounds(levelToCardNum(level));
-        setScoreStartLevel(score.current);
+        setScoreStartLevel(score.current + 1);
       }
     } else {
       let newBestScore =
         score.current > score.best ? score.current : score.best;
       setScore(new ScoreObj(0, newBestScore));
+      setLevel(1);
+      setScoreStartLevel(0);
     }
   };
 
+  const [levelRounds, setLevelRounds] = useState(levelToCardNum(level));
   useEffect(() => {
     setLevelRounds(levelToCardNum(level));
-    setScoreStartLevel(score.current);
   }, [level]);
 
   /*

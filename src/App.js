@@ -35,13 +35,14 @@ const App = () => {
     setLevelRounds(levelToCardNum(level));
   }, [level]);
 
-  /*
   const [currentCards, setCurrentCards] = useState(
     pickCards(levelRounds, CARD_DECK)
   );
   useEffect(() => {
-    setCurrentCards(levelRounds, CARD_DECK);
-  }, [levelRounds]);*/
+    setCurrentCards(pickCards(levelRounds, CARD_DECK));
+  }, [levelRounds]);
+
+  console.log(currentCards);
 
   return (
     <div>
@@ -56,6 +57,7 @@ const App = () => {
       <div>Level: {level}</div>
       <div># of rounds in level: {levelRounds}</div>
       <div>Score at level start: {scoreStartLevel}</div>
+      <div>Current cards: {JSON.stringify(currentCards)}</div>
     </div>
   );
 };

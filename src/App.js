@@ -6,6 +6,7 @@ import {
   levelToCardNum,
   pickCards,
   ScoreObj,
+  shuffleCards,
 } from "./common/index.js";
 
 const App = () => {
@@ -28,6 +29,8 @@ const App = () => {
       setLevel(1);
       setScoreStartLevel(0);
     }
+
+    setCurrentCards(shuffleCards(currentCards));
   };
 
   const [levelRounds, setLevelRounds] = useState(levelToCardNum(level));
@@ -41,8 +44,6 @@ const App = () => {
   useEffect(() => {
     setCurrentCards(pickCards(levelRounds, CARD_DECK));
   }, [levelRounds]);
-
-  console.log(currentCards);
 
   return (
     <div>

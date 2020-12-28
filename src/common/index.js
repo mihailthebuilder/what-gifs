@@ -33,4 +33,8 @@ function ScoreObj(currentScore, bestScore) {
   this.best = bestScore;
 }
 
-export { CARD_DECK, levelToCardNum, pickCards, ScoreObj };
+const shuffleCards = (cards) => {
+  return cards.sort(() => 0.5 - Math.random());
+};
+
+export { CARD_DECK, levelToCardNum, pickCards, ScoreObj, shuffleCards };

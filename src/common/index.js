@@ -17,4 +17,20 @@ const CARD_DECK = [
   new CardItem("horriblelaugh", "Horrible Laugh", "", ""),
 ];
 
-export { CARD_DECK };
+const levelToCardNum = (level) => {
+  return level * 2 + 1;
+};
+
+const pickCards = (cardNum, cardDeck) => {
+  return cardDeck
+    .slice()
+    .sort(() => 0.5 - Math.random())
+    .slice(0, cardNum);
+};
+
+function ScoreObj(currentScore, bestScore) {
+  this.current = currentScore;
+  this.best = bestScore;
+}
+
+export { CARD_DECK, levelToCardNum, pickCards, ScoreObj };

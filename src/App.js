@@ -10,10 +10,19 @@ import {
 
 const App = () => {
   const [score, setScore] = useState(new ScoreObj(0, 0));
+  const [level, setLevel] = useState(1);
+  const [levelRounds, setLevelRounds] = useState(levelToCardNum(level));
+  const [scoreStartLevel, setScoreStartLevel] = useState(0);
 
   const checkAnswer = (event) => {
     if (event.target.getAttribute("val") === "1") {
       setScore(new ScoreObj(score.current + 1, score.best));
+
+      if (score.current > levelRounds + scoreStartLevel - 2) {
+        setLevel(level + 1);
+        setLevelRounds(levelToCardNum(level));
+        setScoreStartLevel(score.current);
+      }
     } else {
       let newBestScore =
         score.current > score.best ? score.current : score.best;
@@ -21,15 +30,12 @@ const App = () => {
     }
   };
 
-  /*
-
-  const [level, setLevel] = useState(1);
-
-  const [levelRounds, setLevelRounds] = useState(levelToCardNum(level));
   useEffect(() => {
     setLevelRounds(levelToCardNum(level));
+    setScoreStartLevel(score.current);
   }, [level]);
 
+  /*
   const [currentCards, setCurrentCards] = useState(
     pickCards(levelRounds, CARD_DECK)
   );
@@ -47,6 +53,9 @@ const App = () => {
       </button>
       <div>Current score: {score.current}</div>
       <div>Best score: {score.best}</div>
+      <div>Level: {level}</div>
+      <div># of rounds in level: {levelRounds}</div>
+      <div>Score at level start: {scoreStartLevel}</div>
     </div>
   );
 };

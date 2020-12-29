@@ -7,6 +7,7 @@ import {
   pickCards,
   ScoreObj,
   shuffleCards,
+  MAX_SCORE,
 } from "./common/index.js";
 
 const App = () => {
@@ -59,6 +60,7 @@ const App = () => {
       <div># of rounds in level: {levelRounds}</div>
       <div>Score at level start: {scoreStartLevel}</div>
       <div>Current cards: {JSON.stringify(currentCards)}</div>
+      <div>Max score: {MAX_SCORE}</div>
     </div>
   );
 };

@@ -1,0 +1,40 @@
+@import "../../common/resources.scss";
+
+.game-data-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 1rem $desktop-horizontal-padding;
+}
+
+.level {
+  color: $carolina-blue;
+}
+
+.score-wrapper {
+  justify-self: end;
+}
+
+.current-score {
+  color: $orange-yellow;
+}
+
+.best-score {
+  margin-left: 2rem;
+  color: $frostbite;
+}
+
+@media (max-width: $mobile-screen) {
+  .game-data-wrapper {
+    display: block;
+    padding: 0.5rem $mobile-horizontal-padding;
+  }
+
+  .level {
+    margin-bottom: 0.2rem;
+  }
+
+  .level,
+  .score-wrapper {
+    text-align: center;
+  }
+}

@@ -55,7 +55,6 @@ const App = () => {
     <div>
       <NavBar />
       <GameData level={level} score={score} />
-      <GifContainer currentCards={currentCards} />
       <button className="regular-font-size" onClick={checkAnswer} val="1">
         Correct Answer
       </button>
@@ -70,7 +69,16 @@ const App = () => {
         Reset maxScoreReached
       </button>
       <div>Max score: {MAX_SCORE}</div>
-      <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>
+      <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>{" "}
+      <div className="gif-cards-container">
+        {currentCards.map((cardItem) => (
+          <GifContainer
+            key={cardItem.key}
+            source={cardItem.key}
+            title={cardItem.title}
+          />
+        ))}
+      </div>
     </div>
   );
 };

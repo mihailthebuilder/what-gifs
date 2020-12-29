@@ -4,6 +4,7 @@ nav {
   background: $eerie-black;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  font-size: 1.5rem;
 
   div {
     display: flex;
@@ -17,17 +18,17 @@ nav {
   cursor: default;
 
   img {
-    height: 5vw;
+    height: 4rem;
   }
 
   span {
-    margin-left: 2vw;
+    margin-left: 1rem;
   }
 }
 
 .right-nav-wrapper {
   justify-self: end;
-  padding: 0 $site-horizontal-padding;
+  padding: 0 2rem;
   cursor: pointer;
 }
 
@@ -36,8 +37,16 @@ nav {
   transition: $transition-time;
 }
 
-@media (max-width: $tablet-screen) {
+@media (max-width: $mobile-screen) {
+  nav {
+    font-size: 1rem;
+  }
+
   .left-nav-wrapper img {
-    height: 10vw;
+    height: 3rem;
+  }
+
+  .right-nav-wrapper {
+    padding: 0 1rem;
   }
 } ;

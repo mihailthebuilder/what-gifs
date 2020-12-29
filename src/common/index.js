@@ -28,7 +28,7 @@ const scoreToLevel = (score, levelToNum) => {
     level++;
     scoreAtLevel += levelToNum(level);
   }
-  return level - 1;
+  return level;
 };
 
 const getMaxScore = (cardDeck, levelToNum) => {
@@ -65,4 +65,5 @@ export {
   ScoreObj,
   shuffleCards,
   MAX_SCORE,
+  scoreToLevel,
 };

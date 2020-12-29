@@ -2,4 +2,42 @@
 
 nav {
   background: $eerie-black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
+
+.left-nav-wrapper {
+  justify-self: start;
+  cursor: default;
+
+  img {
+    height: 5vw;
+  }
+
+  span {
+    margin-left: 2vw;
+  }
+}
+
+.right-nav-wrapper {
+  justify-self: end;
+  padding: 0 $site-horizontal-padding;
+  cursor: pointer;
+}
+
+.right-nav-wrapper:hover {
+  background: $carolina-blue;
+  transition: $transition-time;
+}
+
+@media (max-width: $tablet-screen) {
+  .left-nav-wrapper img {
+    height: 10vw;
+  }
+} ;

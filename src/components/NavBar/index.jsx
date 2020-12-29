@@ -1,19 +1,16 @@
 import React from "react";
 import "./NavBar.scss";
+import Cat from "./cat.png";
 
 const NavBar = ({ score }) => {
   return (
-    <header className="font-size-regular">
+    <header className="regular-font-size">
       <nav>
-        <div id="nav-logo-wrapper">
-          <span>Tech News</span>
-          <span id="nav-logo-red">Asia</span>
+        <div className="left-nav-wrapper">
+          <img src={Cat} alt="Cat" />
+          <span>What GIFs</span>
         </div>
-        <ul id="right-nav-wrapper">
-          <li>Home</li>
-          <li>Contact</li>
-        </ul>
-        <div id="dropdown-button-wrapper"></div>
+        <div className="right-nav-wrapper">How it works</div>
       </nav>
     </header>
   );

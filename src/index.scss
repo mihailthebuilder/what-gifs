@@ -10,12 +10,12 @@ body {
 
   /*no gaps in horizontal margins of the html*/
   margin: 0;
-  overflow-x: none;
 
   background-color: $rich-black;
 
   * {
     box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   color: white;

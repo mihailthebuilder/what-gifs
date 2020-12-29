@@ -4,7 +4,6 @@ nav {
   background: $eerie-black;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  font-size: 1.5rem;
 
   div {
     display: flex;
@@ -28,7 +27,7 @@ nav {
 
 .right-nav-wrapper {
   justify-self: end;
-  padding: 0 2rem;
+  padding: 0 $desktop-horizontal-padding;
   cursor: pointer;
 }
 
@@ -38,15 +37,11 @@ nav {
 }
 
 @media (max-width: $mobile-screen) {
-  nav {
-    font-size: 1rem;
-  }
-
   .left-nav-wrapper img {
     height: 3rem;
   }
 
   .right-nav-wrapper {
-    padding: 0 1rem;
+    padding: 0 $mobile-horizontal-padding;
   }
 } ;

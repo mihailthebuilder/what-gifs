@@ -1,10 +1,9 @@
-import React from "react";
 import "./NavBar.scss";
 import Cat from "./cat.png";
 
-const NavBar = ({ score }) => {
+const NavBar = () => {
   return (
-    <header className="regular-font-size">
+    <header className="font-size-regular">
       <nav>
         <div className="left-nav-wrapper">
           <img src={Cat} alt="Cat" />

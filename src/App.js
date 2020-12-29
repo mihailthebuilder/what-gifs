@@ -13,6 +13,7 @@ import {
 
 import NavBar from "./components/NavBar";
 import GameData from "./components/GameData";
+import GifContainer from "./components/GifContainer";
 
 const App = () => {
   const [score, setScore] = useState(new ScoreObj(0, 0));
@@ -54,6 +55,7 @@ const App = () => {
     <div>
       <NavBar />
       <GameData level={level} score={score} />
+      <GifContainer currentCards={currentCards} />
       <button className="regular-font-size" onClick={checkAnswer} val="1">
         Correct Answer
       </button>
@@ -67,7 +69,6 @@ const App = () => {
       >
         Reset maxScoreReached
       </button>
-      <div>Current cards: {JSON.stringify(currentCards)}</div>
       <div>Max score: {MAX_SCORE}</div>
       <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>
     </div>

@@ -11,6 +11,8 @@ import {
   scoreToLevel,
 } from "./common/index.js";
 
+import NavBar from "./components/NavBar";
+
 const App = () => {
   const [score, setScore] = useState(new ScoreObj(0, 0));
   const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
@@ -49,6 +51,7 @@ const App = () => {
 
   return (
     <div>
+      <NavBar score={score} />
       <button className="regular-font-size" onClick={checkAnswer} val="1">
         Correct Answer
       </button>

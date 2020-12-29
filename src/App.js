@@ -13,7 +13,8 @@ import {
 
 const App = () => {
   const [score, setScore] = useState(new ScoreObj(0, 0));
-  const [level, setLevel] = useState(1);
+  const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
+  const [maxScoreReached, setMaxScoreReached] = useState(false);
 
   const checkAnswer = (event) => {
     if (event.target.getAttribute("val") === "1") {
@@ -28,8 +29,16 @@ const App = () => {
   };
 
   useEffect(() => {
-    setLevel(scoreToLevel(score.current, levelToCardNum));
+    if (score.current === MAX_SCORE) {
+      setScore(new ScoreObj(0, MAX_SCORE - 1));
+      setLevel(scoreToLevel(0, levelToCardNum));
+      setMaxScoreReached(true);
+    } else setLevel(scoreToLevel(score.current, levelToCardNum));
   }, [score]);
+
+  const resetMaxScoreReached = (event) => {
+    setMaxScoreReached(false);
+  };
 
   const [currentCards, setCurrentCards] = useState(
     pickCards(levelToCardNum(level), CARD_DECK)
@@ -46,11 +55,19 @@ const App = () => {
       <button className="regular-font-size" onClick={checkAnswer} val="0">
         Incorrect Answer
       </button>
+      <button
+        className="regular-font-size"
+        onClick={resetMaxScoreReached}
+        disabled={!maxScoreReached}
+      >
+        Reset maxScoreReached
+      </button>
       <div>Current score: {score.current}</div>
       <div>Best score: {score.best}</div>
       <div>Level: {level}</div>
       <div>Current cards: {JSON.stringify(currentCards)}</div>
       <div>Max score: {MAX_SCORE}</div>
+      <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>
     </div>
   );
 };

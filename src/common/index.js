@@ -1,20 +1,20 @@
-function CardItem(key, title, gifSrc, imgSrc) {
+function CardItem(key, title) {
   this.key = key;
   this.title = title;
-  this.gifSrc = gifSrc;
-  this.imgSrc = imgSrc;
 }
 
 const CARD_DECK = [
-  new CardItem("holla", "Holla There", "", ""),
-  new CardItem("wazap", "Whatsuuup", "", ""),
-  new CardItem("fight", "Fight fight!", "", ""),
-  new CardItem("awkward", "Awkwaaaard...", "", ""),
-  new CardItem("saywhat", "Say Whaat???", "", ""),
-  new CardItem("noway", "Nooo Wayy", "", ""),
-  new CardItem("dead", "Dead", "", ""),
-  /*new CardItem("shocked", "Shocked", "", ""),
-  new CardItem("horriblelaugh", "Horrible Laugh", "", ""),*/
+  new CardItem("awkward", "Awkward Erm"),
+  new CardItem("bored", "Bored Cat"),
+  new CardItem("ohgod", "Oh God Reaction"),
+  new CardItem("doggystyle", "Doggy Style Fail"),
+  new CardItem("rwow", "R & R Wow"),
+  new CardItem("failhome", "Fail Home Video"),
+  new CardItem("letmein", "Let Me In"),
+  new CardItem("icehockey", "Ouch Ice Hockey"),
+  new CardItem("bros", "Best Bros Friendship"),
+  new CardItem("weekend", "Mood Monday"),
+  new CardItem("office", "The Office Get Out"),
 ];
 
 const levelToCardNum = (level) => {

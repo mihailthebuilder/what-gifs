@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.b2690965.chunk.css",
-    "main.js": "/react-gh-pages/static/js/main.ff0af37f.chunk.js",
-    "main.js.map": "/react-gh-pages/static/js/main.ff0af37f.chunk.js.map",
-    "runtime-main.js": "/react-gh-pages/static/js/runtime-main.0ef8a469.js",
-    "runtime-main.js.map": "/react-gh-pages/static/js/runtime-main.0ef8a469.js.map",
-    "static/js/2.0ed756c2.chunk.js": "/react-gh-pages/static/js/2.0ed756c2.chunk.js",
-    "static/js/2.0ed756c2.chunk.js.map": "/react-gh-pages/static/js/2.0ed756c2.chunk.js.map",
-    "index.html": "/react-gh-pages/index.html",
-    "static/css/main.b2690965.chunk.css.map": "/react-gh-pages/static/css/main.b2690965.chunk.css.map",
-    "static/js/2.0ed756c2.chunk.js.LICENSE.txt": "/react-gh-pages/static/js/2.0ed756c2.chunk.js.LICENSE.txt",
-    "static/media/cat.f1560a6c.png": "/react-gh-pages/static/media/cat.f1560a6c.png"
+    "main.css": "/what-gifs/static/css/main.b2690965.chunk.css",
+    "main.js": "/what-gifs/static/js/main.ff0af37f.chunk.js",
+    "main.js.map": "/what-gifs/static/js/main.ff0af37f.chunk.js.map",
+    "runtime-main.js": "/what-gifs/static/js/runtime-main.a4bc737a.js",
+    "runtime-main.js.map": "/what-gifs/static/js/runtime-main.a4bc737a.js.map",
+    "static/js/2.0ed756c2.chunk.js": "/what-gifs/static/js/2.0ed756c2.chunk.js",
+    "static/js/2.0ed756c2.chunk.js.map": "/what-gifs/static/js/2.0ed756c2.chunk.js.map",
+    "index.html": "/what-gifs/index.html",
+    "static/css/main.b2690965.chunk.css.map": "/what-gifs/static/css/main.b2690965.chunk.css.map",
+    "static/js/2.0ed756c2.chunk.js.LICENSE.txt": "/what-gifs/static/js/2.0ed756c2.chunk.js.LICENSE.txt",
+    "static/media/cat.f1560a6c.png": "/what-gifs/static/media/cat.f1560a6c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0ef8a469.js",
+    "static/js/runtime-main.a4bc737a.js",
     "static/js/2.0ed756c2.chunk.js",
     "static/css/main.b2690965.chunk.css",
     "static/js/main.ff0af37f.chunk.js"

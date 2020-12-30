@@ -13,11 +13,14 @@ const GifContainer = ({ source, title }) => {
     imgElem.src = `${process.env.PUBLIC_URL}/gifs/images/${source}.jpg`;
   };
 
+  //clean up event listeners
   useEffect(() => {
-    let cardWrapper = document.getElementById(source);
-    cardWrapper.removeEventListener("mouseenter", playGif);
-    cardWrapper.removeEventListener("mouseleave", stopPlayGif);
-  }, []);
+    return () => {
+      const cardWrapper = document.getElementById(source);
+      cardWrapper.removeEventListener("mouseenter", playGif);
+      cardWrapper.removeEventListener("mouseleave", stopPlayGif);
+    };
+  });
 
   return (
     <div

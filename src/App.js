@@ -22,14 +22,21 @@ const App = () => {
 
   const checkAnswer = (event) => {
     if (event.target.getAttribute("val") === "1") {
-      setScore(new ScoreObj(score.current + 1, score.best));
+      setScore(
+        (previousScore) =>
+          new ScoreObj(previousScore.current + 1, previousScore.best)
+      );
     } else {
-      let newBestScore =
-        score.current > score.best ? score.current : score.best;
-      setScore(new ScoreObj(0, newBestScore));
+      setScore((previousScore) => {
+        let newBestScore =
+          previousScore.current > previousScore.best
+            ? previousScore.current
+            : previousScore.best;
+        return new ScoreObj(0, newBestScore);
+      });
     }
 
-    setCurrentCards(shuffleCards(currentCards));
+    setCurrentCards((previousCards) => shuffleCards(previousCards));
   };
 
   useEffect(() => {

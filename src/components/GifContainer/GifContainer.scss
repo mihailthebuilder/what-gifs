@@ -1,8 +1,6 @@
 @import "../../common/resources.scss";
 
 .card-wrapper {
-  display: inline-block;
-
   img {
     height: 15rem;
   }
@@ -13,10 +11,8 @@
   padding: 0.5rem 0;
 }
 
-@media (max-width: $mobile-screen) {
+@media (max-width: $tablet-screen) {
   .card-wrapper {
-    display: block;
-
     img {
       height: auto;
       width: 100%;

@@ -8,6 +8,12 @@
   justify-content: space-evenly;
 }
 
+@media (max-width: $tablet-screen) {
+  .gif-cards-container {
+    display: block;
+  }
+}
+
 @media (max-width: $mobile-screen) {
   .gif-cards-container {
     padding: $mobile-horizontal-padding;

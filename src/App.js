@@ -77,8 +77,10 @@ const App = () => {
       </button>
       <div>Max score: {MAX_SCORE}</div>
       <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>
-      <div className="mobile-instructions">
-        Start scrolling to play the GIFs
+      <div className="instructions">
+        {window.innerWidth > 768
+          ? "Hover to play the GIF"
+          : "Start scrolling to play the GIFs"}
       </div>
       <div className="gif-cards-container">
         {currentCards.map((cardItem) => (

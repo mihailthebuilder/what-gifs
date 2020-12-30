@@ -2,33 +2,48 @@ import React, { useEffect } from "react";
 
 import "./GifContainer.scss";
 
+import { isScrolledIntoView } from "../../common/index.js";
+
 const GifContainer = ({ source, title }) => {
-  const playGif = (event) => {
-    let imgElem = event.target.closest(".card-wrapper").querySelector("img");
-    imgElem.src = `${process.env.PUBLIC_URL}/gifs/original/${source}.gif`;
-  };
-
-  const stopPlayGif = (event) => {
-    let imgElem = event.target.closest(".card-wrapper").querySelector("img");
-    imgElem.src = `${process.env.PUBLIC_URL}/gifs/images/${source}.jpg`;
-  };
-
-  //clean up event listeners
   useEffect(() => {
+    const cardWrapper = document.getElementById(source);
+
+    const playGif = () => {
+      cardWrapper.querySelector(
+        "img"
+      ).src = `${process.env.PUBLIC_URL}/gifs/original/${source}.gif`;
+    };
+
+    const stopPlayGif = () => {
+      cardWrapper.querySelector(
+        "img"
+      ).src = `${process.env.PUBLIC_URL}/gifs/images/${source}.jpg`;
+    };
+
+    const checkElemInView = () => {
+      if (isScrolledIntoView(cardWrapper)) {
+        playGif();
+      } else {
+        stopPlayGif();
+      }
+    };
+
+    if (window.innerWidth > 768) {
+      cardWrapper.addEventListener("mouseenter", playGif);
+      cardWrapper.addEventListener("mouseleave", stopPlayGif);
+    } else {
+      window.addEventListener("scroll", checkElemInView);
+    }
+
     return () => {
-      const cardWrapper = document.getElementById(source);
       cardWrapper.removeEventListener("mouseenter", playGif);
       cardWrapper.removeEventListener("mouseleave", stopPlayGif);
+      cardWrapper.removeEventListener("scroll", checkElemInView);
     };
-  });
+  }, [source]);
 
   return (
-    <div
-      className="card-wrapper"
-      onMouseEnter={playGif}
-      onMouseLeave={stopPlayGif}
-      id={source}
-    >
+    <div className="card-wrapper" id={source}>
       <img
         src={`${process.env.PUBLIC_URL}/gifs/images/${source}.jpg`}
         alt={title}

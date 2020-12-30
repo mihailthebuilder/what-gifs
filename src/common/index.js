@@ -58,6 +58,18 @@ const shuffleCards = (cards) => {
   return cards.sort(() => 0.5 - Math.random());
 };
 
+const isScrolledIntoView = (el) => {
+  const rect = el.getBoundingClientRect();
+  const elemTop = rect.top;
+  const elemBottom = rect.bottom;
+
+  // Only completely visible elements return true:
+  const isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
+  // Partially visible elements return true:
+  //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+  return isVisible;
+};
+
 export {
   CARD_DECK,
   levelToCardNum,
@@ -66,4 +78,5 @@ export {
   shuffleCards,
   MAX_SCORE,
   scoreToLevel,
+  isScrolledIntoView,
 };

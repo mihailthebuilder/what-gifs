@@ -1,0 +1,15 @@
+@import "./common/resources.scss";
+
+.gif-cards-container {
+  padding: $desktop-horizontal-padding;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media (max-width: $mobile-screen) {
+  .gif-cards-container {
+    padding: $mobile-horizontal-padding;
+  }
+}

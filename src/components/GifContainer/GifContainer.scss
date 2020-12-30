@@ -1,0 +1,20 @@
+@import "../../common/resources.scss";
+
+.card-wrapper {
+  display: inline-block;
+
+  img {
+    height: 15rem;
+  }
+}
+
+.title {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+@media (max-width: $mobile-screen) {
+  .card-wraper {
+    display: block;
+  }
+}

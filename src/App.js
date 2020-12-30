@@ -76,7 +76,10 @@ const App = () => {
         Reset maxScoreReached
       </button>
       <div>Max score: {MAX_SCORE}</div>
-      <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>{" "}
+      <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>
+      <div className="mobile-instructions">
+        Start scrolling to play the GIFs
+      </div>
       <div className="gif-cards-container">
         {currentCards.map((cardItem) => (
           <GifContainer

@@ -20,7 +20,6 @@ const App = () => {
   const [bestScore, setBestScore] = useState(0);
 
   const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
-  const [maxScoreReached, setMaxScoreReached] = useState(false);
 
   useEffect(() => {
     if (currentScore === MAX_SCORE) {
@@ -31,10 +30,6 @@ const App = () => {
       setPopupShow(true);
     } else setLevel(scoreToLevel(currentScore, levelToCardNum));
   }, [currentScore]);
-
-  const resetMaxScoreReached = () => {
-    setMaxScoreReached(false);
-  };
 
   const [currentCards, setCurrentCards] = useState(
     pickCards(levelToCardNum(level), CARD_DECK)
@@ -93,21 +88,6 @@ const App = () => {
       <button className="font-size-regular" onClick={cheat}>
         Cheat
       </button>
-      <button
-        className="font-size-regular"
-        onClick={resetMaxScoreReached}
-        disabled={!maxScoreReached}
-      >
-        Reset maxScoreReached
-      </button>
-      <div>Max score: {MAX_SCORE}</div>
-      <div>Max score reached? {maxScoreReached ? "yes" : "no"} </div>
-      <div className="instructions">
-        {window.innerWidth > 768
-          ? "Hover to play the GIF"
-          : "Start scrolling to play the GIFs"}
-      </div>
-      <div>Selected cards: {selectedCards.join(", ")}</div>
       <div className="gif-cards-container">
         {currentCards.map((cardItem) => (
           <GifContainer

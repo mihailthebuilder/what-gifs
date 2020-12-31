@@ -28,7 +28,19 @@ const PopUp = ({ popupShow, popupMessage, closeButton }) => {
           </div>,
           "Understood, now let me play the damn game!",
         ]
-      : ["", "", ""];
+      : [
+          "You beat the game!",
+          <div className="popup-content font-size-regular">
+            <p>Congratulations, you reached the maximum score!</p>
+            <p>
+              You were expecting more, weren't you? A reward maybe? I don't have
+              anything, just be proud of the bragging rights you get. People are
+              gonna fall over you once you tell them about this achievement.
+            </p>
+            <p>...why are you still reading? Bugger off.</p>
+          </div>,
+          "This is so addictive, let me play again!",
+        ];
 
   return (
     <div className={popBackgClass}>

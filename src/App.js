@@ -14,6 +14,7 @@ import {
 import NavBar from "./components/NavBar";
 import GameData from "./components/GameData";
 import GifContainer from "./components/GifContainer";
+import PopUp from "./components/PopUp";
 
 const App = () => {
   const [score, setScore] = useState(new ScoreObj(0, 0));
@@ -66,6 +67,7 @@ const App = () => {
 
   return (
     <div>
+      <PopUp show={true} />
       <NavBar />
       <GameData level={level} score={score} />
       <button

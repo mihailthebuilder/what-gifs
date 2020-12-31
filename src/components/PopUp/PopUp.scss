@@ -1,0 +1,15 @@
+@import "../../common/resources.scss";
+
+.popup-background {
+  display: none;
+}
+
+.popup-background.show {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: $eerie-black;
+}

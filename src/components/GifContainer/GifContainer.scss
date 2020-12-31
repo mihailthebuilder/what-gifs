@@ -15,11 +15,12 @@
 
 .title {
   text-align: center;
-  padding: 0.5rem 0;
+  padding: 0.7rem 0;
 }
 
 @media (max-width: $tablet-screen) {
   .card-wrapper {
+    margin: 4rem 0;
     img {
       height: auto;
       width: 100%;
@@ -37,6 +38,6 @@
   }
 
   .title {
-    padding: 0.5rem 0;
+    padding: 0.7rem 0;
   }
 }

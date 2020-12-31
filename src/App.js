@@ -20,23 +20,6 @@ const App = () => {
   const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
   const [maxScoreReached, setMaxScoreReached] = useState(false);
 
-  const checkAnswerCard = (event) => {
-    if (event.target.getAttribute("val") === "1") {
-      setScore(
-        (previousScore) =>
-          new ScoreObj(previousScore.current + 1, previousScore.best)
-      );
-    } else {
-      setScore((previousScore) => {
-        let newBestScore =
-          previousScore.current > previousScore.best
-            ? previousScore.current
-            : previousScore.best;
-        return new ScoreObj(0, newBestScore);
-      });
-    }
-  };
-
   useEffect(() => {
     if (score.current === MAX_SCORE) {
       setScore(new ScoreObj(0, MAX_SCORE - 1));
@@ -85,12 +68,6 @@ const App = () => {
     <div>
       <NavBar />
       <GameData level={level} score={score} />
-      <button className="regular-font-size" onClick={checkAnswerCard} val="1">
-        Correct Answer
-      </button>
-      <button className="regular-font-size" onClick={checkAnswerCard} val="0">
-        Incorrect Answer
-      </button>
       <button
         className="regular-font-size"
         onClick={resetMaxScoreReached}

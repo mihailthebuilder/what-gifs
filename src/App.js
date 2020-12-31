@@ -25,13 +25,14 @@ const App = () => {
   useEffect(() => {
     if (currentScore === MAX_SCORE) {
       setCurrentScore(0);
-      setBestScore(MAX_SCORE - 1);
+      setBestScore(MAX_SCORE);
       setLevel(scoreToLevel(0, levelToCardNum));
-      setMaxScoreReached(true);
+      setPopupMessage("max");
+      setPopupShow(true);
     } else setLevel(scoreToLevel(currentScore, levelToCardNum));
   }, [currentScore]);
 
-  const resetMaxScoreReached = (event) => {
+  const resetMaxScoreReached = () => {
     setMaxScoreReached(false);
   };
 
@@ -67,6 +68,11 @@ const App = () => {
 
   const togglePopup = () => setPopupShow((previousValue) => !previousValue);
 
+  const howPopupShow = () => {
+    setPopupMessage("how");
+    togglePopup();
+  };
+
   const cheat = () => {
     setCurrentScore(MAX_SCORE - 2);
   };
@@ -76,9 +82,9 @@ const App = () => {
       <PopUp
         popupShow={popupShow}
         popupMessage={popupMessage}
-        togglePopup={togglePopup}
+        closeButton={togglePopup}
       />
-      <NavBar togglePopup={togglePopup} />
+      <NavBar howPopupShow={howPopupShow} />
       <GameData
         level={level}
         currentScore={currentScore}

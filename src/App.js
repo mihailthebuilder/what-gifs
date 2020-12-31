@@ -67,6 +67,10 @@ const App = () => {
 
   const togglePopup = () => setPopupShow((previousValue) => !previousValue);
 
+  const cheat = () => {
+    setCurrentScore(MAX_SCORE - 2);
+  };
+
   return (
     <div>
       <PopUp
@@ -80,8 +84,11 @@ const App = () => {
         currentScore={currentScore}
         bestScore={bestScore}
       />
+      <button className="font-size-regular" onClick={cheat}>
+        Cheat
+      </button>
       <button
-        className="regular-font-size"
+        className="font-size-regular"
         onClick={resetMaxScoreReached}
         disabled={!maxScoreReached}
       >

@@ -20,7 +20,7 @@ const App = () => {
   const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
   const [maxScoreReached, setMaxScoreReached] = useState(false);
 
-  const checkAnswer = (event) => {
+  const checkAnswerCard = (event) => {
     if (event.target.getAttribute("val") === "1") {
       setScore(
         (previousScore) =>
@@ -35,8 +35,6 @@ const App = () => {
         return new ScoreObj(0, newBestScore);
       });
     }
-
-    setCurrentCards((previousCards) => shuffleCards(previousCards));
   };
 
   useEffect(() => {
@@ -56,16 +54,41 @@ const App = () => {
   );
   useEffect(() => {
     setCurrentCards(pickCards(levelToCardNum(level), CARD_DECK));
+    setSelectedCards([]);
   }, [level]);
+
+  const [selectedCards, setSelectedCards] = useState([]);
+
+  const checkAnswer = (event) => {
+    let cardId = event.target.closest(".card-wrapper").id;
+
+    if (selectedCards.includes(cardId)) {
+      setScore((previousScore) => {
+        let newBestScore =
+          previousScore.current > previousScore.best
+            ? previousScore.current
+            : previousScore.best;
+        return new ScoreObj(0, newBestScore);
+      });
+      setSelectedCards([]);
+    } else {
+      setScore(
+        (previousScore) =>
+          new ScoreObj(previousScore.current + 1, previousScore.best)
+      );
+      setSelectedCards((previousArray) => previousArray.concat(cardId));
+    }
+    setCurrentCards((previousCards) => shuffleCards(previousCards));
+  };
 
   return (
     <div>
       <NavBar />
       <GameData level={level} score={score} />
-      <button className="regular-font-size" onClick={checkAnswer} val="1">
+      <button className="regular-font-size" onClick={checkAnswerCard} val="1">
         Correct Answer
       </button>
-      <button className="regular-font-size" onClick={checkAnswer} val="0">
+      <button className="regular-font-size" onClick={checkAnswerCard} val="0">
         Incorrect Answer
       </button>
       <button
@@ -82,12 +105,14 @@ const App = () => {
           ? "Hover to play the GIF"
           : "Start scrolling to play the GIFs"}
       </div>
+      <div>Selected cards: {selectedCards.join(", ")}</div>
       <div className="gif-cards-container">
         {currentCards.map((cardItem) => (
           <GifContainer
             key={cardItem.key}
             source={cardItem.key}
             title={cardItem.title}
+            checkAnswer={checkAnswer}
           />
         ))}
       </div>

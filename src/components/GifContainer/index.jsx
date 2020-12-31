@@ -4,7 +4,7 @@ import "./GifContainer.scss";
 
 import { isScrolledIntoView } from "../../common/index.js";
 
-const GifContainer = ({ source, title }) => {
+const GifContainer = ({ source, title, checkAnswer }) => {
   useEffect(() => {
     const cardWrapper = document.getElementById(source);
 
@@ -45,7 +45,7 @@ const GifContainer = ({ source, title }) => {
   }, [source]);
 
   return (
-    <div className="card-wrapper" id={source}>
+    <div className="card-wrapper" id={source} onClick={checkAnswer}>
       <img
         src={`${process.env.PUBLIC_URL}/gifs/images/${source}.jpg`}
         alt={title}

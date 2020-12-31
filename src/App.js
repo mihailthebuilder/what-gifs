@@ -5,7 +5,6 @@ import {
   CARD_DECK,
   levelToCardNum,
   pickCards,
-  ScoreObj,
   shuffleCards,
   MAX_SCORE,
   scoreToLevel,
@@ -17,17 +16,20 @@ import GifContainer from "./components/GifContainer";
 import PopUp from "./components/PopUp";
 
 const App = () => {
-  const [score, setScore] = useState(new ScoreObj(0, 0));
+  const [currentScore, setCurrentScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+
   const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
   const [maxScoreReached, setMaxScoreReached] = useState(false);
 
   useEffect(() => {
-    if (score.current === MAX_SCORE) {
-      setScore(new ScoreObj(0, MAX_SCORE - 1));
+    if (currentScore === MAX_SCORE) {
+      setCurrentScore(0);
+      setBestScore(MAX_SCORE - 1);
       setLevel(scoreToLevel(0, levelToCardNum));
       setMaxScoreReached(true);
-    } else setLevel(scoreToLevel(score.current, levelToCardNum));
-  }, [score]);
+    } else setLevel(scoreToLevel(currentScore, levelToCardNum));
+  }, [currentScore]);
 
   const resetMaxScoreReached = (event) => {
     setMaxScoreReached(false);
@@ -47,19 +49,14 @@ const App = () => {
     let cardId = event.target.closest(".card-wrapper").id;
 
     if (selectedCards.includes(cardId)) {
-      setScore((previousScore) => {
-        let newBestScore =
-          previousScore.current > previousScore.best
-            ? previousScore.current
-            : previousScore.best;
-        return new ScoreObj(0, newBestScore);
-      });
+      if (currentScore > bestScore) {
+        setBestScore(currentScore);
+      }
+
+      setCurrentScore(0);
       setSelectedCards([]);
     } else {
-      setScore(
-        (previousScore) =>
-          new ScoreObj(previousScore.current + 1, previousScore.best)
-      );
+      setCurrentScore((previousScore) => previousScore + 1);
       setSelectedCards((previousArray) => previousArray.concat(cardId));
     }
     setCurrentCards((previousCards) => shuffleCards(previousCards));
@@ -78,7 +75,11 @@ const App = () => {
         togglePopup={togglePopup}
       />
       <NavBar togglePopup={togglePopup} />
-      <GameData level={level} score={score} />
+      <GameData
+        level={level}
+        currentScore={currentScore}
+        bestScore={bestScore}
+      />
       <button
         className="regular-font-size"
         onClick={resetMaxScoreReached}

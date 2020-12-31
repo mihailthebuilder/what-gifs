@@ -49,11 +49,6 @@ const pickCards = (cardNum, cardDeck) => {
     .slice(0, cardNum);
 };
 
-function ScoreObj(currentScore, bestScore) {
-  this.current = currentScore;
-  this.best = bestScore;
-}
-
 const shuffleCards = (cards) => {
   return cards.sort(() => 0.5 - Math.random());
 };
@@ -74,7 +69,6 @@ export {
   CARD_DECK,
   levelToCardNum,
   pickCards,
-  ScoreObj,
   shuffleCards,
   MAX_SCORE,
   scoreToLevel,

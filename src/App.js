@@ -19,16 +19,10 @@ const App = () => {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
-  const [level, setLevel] = useState(scoreToLevel(0, levelToCardNum));
+  const [level, setLevel] = useState(1);
 
   useEffect(() => {
-    if (currentScore === MAX_SCORE) {
-      setCurrentScore(0);
-      setBestScore(MAX_SCORE);
-      setLevel(scoreToLevel(0, levelToCardNum));
-      setPopupMessage("max");
-      setPopupShow(true);
-    } else setLevel(scoreToLevel(currentScore, levelToCardNum));
+    setLevel(scoreToLevel(currentScore, levelToCardNum));
   }, [currentScore]);
 
   const [currentCards, setCurrentCards] = useState(
@@ -48,9 +42,13 @@ const App = () => {
       if (currentScore > bestScore) {
         setBestScore(currentScore);
       }
-
       setCurrentScore(0);
       setSelectedCards([]);
+    } else if (currentScore === MAX_SCORE - 1) {
+      setBestScore(MAX_SCORE);
+      setCurrentScore(0);
+      setPopupMessage("max");
+      setPopupShow(true);
     } else {
       setCurrentScore((previousScore) => previousScore + 1);
       setSelectedCards((previousArray) => previousArray.concat(cardId));
@@ -69,7 +67,7 @@ const App = () => {
   };
 
   const cheat = () => {
-    setCurrentScore(MAX_SCORE - 2);
+    setCurrentScore(MAX_SCORE - 1);
   };
 
   return (

@@ -21,8 +21,10 @@ const PopUp = ({ popupShow, popupMessage, closeButton }) => {
             </p>
             <p>
               You can play the GIF by
-              {desktopWindow ? " hovering over it" : " scrolling it into view"}.
-              The maximum score you can get is{" "}
+              {desktopWindow
+                ? " hovering your cursor over it"
+                : " scrolling it into view"}
+              . The maximum score you can get is{" "}
               <span className="frostbite-color">{MAX_SCORE}</span>.
             </p>
           </div>,

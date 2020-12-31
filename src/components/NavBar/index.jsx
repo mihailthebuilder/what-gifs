@@ -1,7 +1,7 @@
 import "./NavBar.scss";
 import Cat from "./cat.png";
 
-const NavBar = () => {
+const NavBar = ({ togglePopup }) => {
   return (
     <header className="font-size-regular">
       <nav>
@@ -9,7 +9,9 @@ const NavBar = () => {
           <img src={Cat} alt="Cat" />
           <span>What GIFs</span>
         </div>
-        <div className="right-nav-wrapper">How it works</div>
+        <div className="right-nav-wrapper" onClick={togglePopup}>
+          How it works
+        </div>
       </nav>
     </header>
   );

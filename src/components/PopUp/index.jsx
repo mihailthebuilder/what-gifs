@@ -2,9 +2,9 @@ import "./PopUp.scss";
 
 import { MAX_SCORE } from "../../common/index.js";
 
-const PopUp = ({ show, messageType }) => {
+const PopUp = ({ popupShow, popupMessage, togglePopup }) => {
   let popBackgClass = "popup-background";
-  if (show) {
+  if (popupShow) {
     popBackgClass += " show";
   }
   let desktopWindow = window.innerWidth > 768;
@@ -26,7 +26,7 @@ const PopUp = ({ show, messageType }) => {
             <span className="frostbite-color">{MAX_SCORE}</span>.
           </p>
         </div>
-        <button className="font-size-regular">
+        <button className="font-size-regular" onClick={togglePopup}>
           Understood, now let me play the damn game!
         </button>
       </div>

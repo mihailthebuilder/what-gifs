@@ -65,10 +65,19 @@ const App = () => {
     setCurrentCards((previousCards) => shuffleCards(previousCards));
   };
 
+  const [popupShow, setPopupShow] = useState(true);
+  const [popupMessage, setPopupMessage] = useState("how");
+
+  const togglePopup = () => setPopupShow((previousValue) => !previousValue);
+
   return (
     <div>
-      <PopUp show={true} />
-      <NavBar />
+      <PopUp
+        popupShow={popupShow}
+        popupMessage={popupMessage}
+        togglePopup={togglePopup}
+      />
+      <NavBar togglePopup={togglePopup} />
       <GameData level={level} score={score} />
       <button
         className="regular-font-size"

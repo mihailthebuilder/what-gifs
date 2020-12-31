@@ -5,11 +5,59 @@
 }
 
 .popup-background.show {
-  display: block;
   position: fixed;
   width: 100vw;
   height: 100vh;
   left: 0;
   top: 0;
   background: $eerie-black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-wrapper {
+  width: 30rem;
+
+  .popup-content,
+  button {
+    line-height: 1.4;
+  }
+
+  button {
+    outline: none;
+    background: transparent;
+    text-align: left;
+    color: $frostbite;
+    cursor: pointer;
+    padding: 1rem 2rem;
+
+    border: 0.2rem solid $frostbite;
+    border-radius: 0.5rem;
+    transition: $transition-time;
+  }
+
+  button:hover {
+    color: $orange-yellow;
+    border-color: $orange-yellow;
+    transition: $transition-time;
+  }
+}
+
+.popup-title {
+  color: $carolina-blue;
+}
+
+.frostbite-color {
+  color: $frostbite;
+}
+
+@media (max-width: $tablet-screen) {
+  .popup-wrapper {
+    button {
+      border-radius: 1vw;
+      border-width: 0.15rem;
+    }
+  }
 }

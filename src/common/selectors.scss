@@ -4,8 +4,16 @@
   font-size: 1.5rem;
 }
 
+.font-size-large {
+  font-size: 3rem;
+}
+
 @media (max-width: $mobile-screen) {
   .font-size-regular {
     font-size: 1rem;
+  }
+
+  .font-size-large {
+    font-size: 2rem;
   }
 }

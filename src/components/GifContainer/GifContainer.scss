@@ -1,9 +1,16 @@
 @import "../../common/resources.scss";
 
 .card-wrapper {
+  background-color: $eerie-black;
+  cursor: pointer;
+  margin: 2rem;
   img {
     height: 15rem;
   }
+}
+
+.yellow-font {
+  color: $orange-yellow;
 }
 
 .title {
@@ -17,5 +24,19 @@
       height: auto;
       width: 100%;
     }
+  }
+
+  .title {
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: $mobile-screen) {
+  .card-wrapper {
+    margin: 2rem 0;
+  }
+
+  .title {
+    padding: 0.5rem 0;
   }
 }

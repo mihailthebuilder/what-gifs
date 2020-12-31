@@ -12,12 +12,14 @@ const GifContainer = ({ source, title }) => {
       cardWrapper.querySelector(
         "img"
       ).src = `${process.env.PUBLIC_URL}/gifs/original/${source}.gif`;
+      cardWrapper.classList.add("yellow-font");
     };
 
     const stopPlayGif = () => {
       cardWrapper.querySelector(
         "img"
       ).src = `${process.env.PUBLIC_URL}/gifs/images/${source}.jpg`;
+      cardWrapper.classList.remove("yellow-font");
     };
 
     const checkElemInView = () => {

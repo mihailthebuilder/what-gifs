@@ -49,6 +49,7 @@ const App = () => {
 
       setCurrentScore(0);
       setSelectedCards([]);
+      setCurrentCards(pickCards(levelToCardNum(level), CARD_DECK));
     } else if (currentScore === MAX_SCORE - 1) {
       //I don't need to reset cards selected her because the level useEffect will reset it anyway
       setBestScore(MAX_SCORE);

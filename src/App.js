@@ -18,6 +18,7 @@ import PopUp from "./components/PopUp";
 const App = () => {
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [scoreAtLoss, setScoreAtLoss] = useState(0);
 
   const [level, setLevel] = useState(1);
 
@@ -42,9 +43,14 @@ const App = () => {
       if (currentScore > bestScore) {
         setBestScore(currentScore);
       }
+      setScoreAtLoss(currentScore);
+      setPopupMessage("loss");
+      setPopupShow(true);
+
       setCurrentScore(0);
       setSelectedCards([]);
     } else if (currentScore === MAX_SCORE - 1) {
+      //I don't need to reset cards selected her because the level useEffect will reset it anyway
       setBestScore(MAX_SCORE);
       setCurrentScore(0);
       setPopupMessage("max");
@@ -76,6 +82,7 @@ const App = () => {
         popupShow={popupShow}
         popupMessage={popupMessage}
         closeButton={togglePopup}
+        scoreAtLoss={scoreAtLoss}
       />
       <NavBar howPopupShow={howPopupShow} />
       <GameData

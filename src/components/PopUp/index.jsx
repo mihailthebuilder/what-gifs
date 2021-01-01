@@ -2,47 +2,85 @@ import "./PopUp.scss";
 
 import { MAX_SCORE } from "../../common/index.js";
 
-const PopUp = ({ popupShow, popupMessage, closeButton }) => {
+const PopUp = ({ popupShow, popupMessage, closeButton, scoreAtLoss }) => {
   let popBackgClass = "popup-background";
   if (popupShow) {
     popBackgClass += " show";
   }
   let desktopWindow = window.innerWidth > 768;
 
-  let [popupTitle, popupContent, popupButtonText] =
-    popupMessage === "how"
-      ? [
-          "How it works",
-          <div className="popup-content font-size-regular">
+  let [popupTitle, popupContent, popupButtonText] = ["", "", ""];
+
+  switch (popupMessage) {
+    case "how":
+      popupTitle = "How it works";
+      popupContent = (
+        <div className="popup-content font-size-regular">
+          <p>
+            Welcome to the <span className="frostbite-color">What GIFs</span>{" "}
+            memory game. The aim of the game is to make sure you don't
+            {desktopWindow ? " click" : " tap"} the same GIF in a given level.
+          </p>
+          <p>
+            You can play the GIF by
+            {desktopWindow
+              ? " hovering your cursor over it"
+              : " scrolling it into view"}
+            . The maximum score you can get is{" "}
+            <span className="frostbite-color">{MAX_SCORE}</span>.
+          </p>
+        </div>
+      );
+      popupButtonText = "Understood, now let me play the damn game!";
+      break;
+    case "max":
+      popupTitle = "You beat the game!";
+      popupContent = (
+        <div className="popup-content font-size-regular">
+          <p>Congratulations, you reached the maximum score!</p>
+          <p>
+            You were expecting more, weren't you? A reward maybe? I don't have
+            anything, just be proud of the bragging rights you get. People are
+            gonna fall over you once you tell them about this achievement.
+          </p>
+          <p>...why are you still reading? Bugger off.</p>
+        </div>
+      );
+      popupButtonText = "This is so addictive, let me play again!";
+      break;
+    default:
+      popupTitle = "You lost T_T";
+      popupContent = (
+        <div className="popup-content font-size-regular">
+          <p>Damn, you lost...what a shame (yawn).</p>
+          {scoreAtLoss < MAX_SCORE / 3 ? (
             <p>
-              Welcome to the <span className="frostbite-color">What GIFs</span>{" "}
-              memory game. The aim of the game is to make sure you don't
-              {desktopWindow ? " click" : " tap"} the same GIF in a given level.
+              And you only managed to get a score of{" "}
+              <span className="frostbite-color">{scoreAtLoss}</span>?? I'm sorry
+              to say this, but...it's pathetic. My cat can do better when he
+              walks over my laptop.
             </p>
+          ) : scoreAtLoss < (MAX_SCORE * 2) / 3 ? (
             <p>
-              You can play the GIF by
-              {desktopWindow
-                ? " hovering your cursor over it"
-                : " scrolling it into view"}
-              . The maximum score you can get is{" "}
-              <span className="frostbite-color">{MAX_SCORE}</span>.
+              Well, at least you managed to get a score of{" "}
+              <span className="frostbite-color">{scoreAtLoss}</span>. It's not
+              too bad, a little better than my cat's personal best (
+              {Math.floor(MAX_SCORE / 3)}). I know it doesn't say much, but you
+              could've done better.
             </p>
-          </div>,
-          "Understood, now let me play the damn game!",
-        ]
-      : [
-          "You beat the game!",
-          <div className="popup-content font-size-regular">
-            <p>Congratulations, you reached the maximum score!</p>
+          ) : (
             <p>
-              You were expecting more, weren't you? A reward maybe? I don't have
-              anything, just be proud of the bragging rights you get. People are
-              gonna fall over you once you tell them about this achievement.
+              You were so close too, with a score of{" "}
+              <span className="frostbite-color">{scoreAtLoss}</span> (remember,
+              the max score is {MAX_SCORE}). But that doesn't matter now, all is
+              lost and you have to start again. I almost feel sorry for you.
             </p>
-            <p>...why are you still reading? Bugger off.</p>
-          </div>,
-          "This is so addictive, let me play again!",
-        ];
+          )}
+          <p>Better luck next time I guess.</p>
+        </div>
+      );
+      popupButtonText = "Just stop talking and let me give it another shot!";
+  }
 
   return (
     <div className={popBackgClass}>

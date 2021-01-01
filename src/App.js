@@ -18,6 +18,10 @@ import PopUp from "./components/PopUp";
 
 import LoadingGif from "./LoadingGif.webp";
 
+import EndGameSound from "./EndGame.mp3";
+import RightAnswerSound from "./RightAnswer.mp3";
+import WrongAnswerSound from "./WrongAnswer.mp3";
+
 const App = () => {
   //current score, best score & level
   const [currentScore, setCurrentScore] = useState(0);
@@ -74,6 +78,7 @@ const App = () => {
     /* 3 scenarios: incorrect card picked, correct cards picked, max level reached
      */
     if (selectedCards.includes(cardId)) {
+      playSound(WrongAnswerSound);
       setPopupMessage("loss");
       setScoreAtLoss(currentScore);
       setPopupVisible(true);
@@ -88,6 +93,7 @@ const App = () => {
       setGameStart(true);
       //
     } else if (currentScore === MAX_SCORE - 1) {
+      playSound(EndGameSound);
       setPopupMessage("max");
       setPopupVisible(true);
 
@@ -99,6 +105,7 @@ const App = () => {
       setGameStart(true);
       //
     } else {
+      playSound(RightAnswerSound);
       if (scoreToLevel(currentScore + 1, levelToCardNum) > level) {
         setLevel((previousValue) => previousValue + 1);
         setSelectedCards([]);
@@ -120,8 +127,9 @@ const App = () => {
     }
   };
 
-  const cheat = () => {
-    setCurrentScore(MAX_SCORE - 1);
+  const playSound = (src) => {
+    let audio = new Audio(src);
+    audio.play();
   };
 
   return (
@@ -138,9 +146,6 @@ const App = () => {
         currentScore={currentScore}
         bestScore={bestScore}
       />
-      <button className="font-size-regular" onClick={cheat}>
-        Cheat
-      </button>
       {cardsVisible && (
         <div className="gif-cards-container">
           {currentCards.map((cardItem) => (

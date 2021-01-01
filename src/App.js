@@ -8,6 +8,7 @@ import {
   shuffleCards,
   MAX_SCORE,
   scoreToLevel,
+  LEVEL_LOAD_TIME,
 } from "./common/index.js";
 
 import NavBar from "./components/NavBar";
@@ -26,12 +27,24 @@ const App = () => {
     setLevel(scoreToLevel(currentScore, levelToCardNum));
   }, [currentScore]);
 
+  const [levelLoadingVisible, setLevelLoadingVisible] = useState(false);
+
   const [currentCards, setCurrentCards] = useState(
     pickCards(levelToCardNum(level), CARD_DECK)
   );
   useEffect(() => {
+    if (level > 1) {
+      setCardsVisible(false);
+      setLevelLoadingVisible(true);
+      setTimeout(() => {
+        console.log("started waiting");
+        setLevelLoadingVisible(false);
+        setCardsVisible(true);
+      }, LEVEL_LOAD_TIME);
+    }
     setCurrentCards(pickCards(levelToCardNum(level), CARD_DECK));
     setSelectedCards([]);
+    console.log("went past waiting");
   }, [level]);
 
   const [selectedCards, setSelectedCards] = useState([]);
@@ -61,10 +74,12 @@ const App = () => {
       setPopupShow(true);
       setCardsVisible(false);
     } else {
+      setCardsVisible(false);
       setCurrentScore((previousScore) => previousScore + 1);
       setSelectedCards((previousArray) => previousArray.concat(cardId));
+      setCurrentCards((previousCards) => shuffleCards(previousCards));
+      setTimeout(() => setCardsVisible(true), 200);
     }
-    setCurrentCards((previousCards) => shuffleCards(previousCards));
   };
 
   const [popupShow, setPopupShow] = useState(true);
@@ -72,7 +87,16 @@ const App = () => {
 
   const togglePopup = () => {
     setPopupShow((previousValue) => !previousValue);
-    setCardsVisible((previousValue) => !previousValue);
+    if (!gameStart) {
+      setCardsVisible((previousValue) => !previousValue);
+    } else {
+      setLevelLoadingVisible(true);
+      setTimeout(() => {
+        setLevelLoadingVisible(false);
+        setCardsVisible(true);
+        setGameStart(false);
+      }, LEVEL_LOAD_TIME);
+    }
   };
 
   const howPopupShow = () => {
@@ -83,6 +107,8 @@ const App = () => {
   const cheat = () => {
     setCurrentScore(MAX_SCORE - 1);
   };
+
+  const [gameStart, setGameStart] = useState(true);
 
   return (
     <div>
@@ -113,6 +139,7 @@ const App = () => {
           ))}
         </div>
       )}
+      {levelLoadingVisible && <div>Loading</div>}
     </div>
   );
 };

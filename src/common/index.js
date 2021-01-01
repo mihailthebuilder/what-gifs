@@ -65,6 +65,8 @@ const isScrolledIntoView = (el) => {
   return isVisible;
 };
 
+const LEVEL_LOAD_TIME = 2000;
+
 export {
   CARD_DECK,
   levelToCardNum,
@@ -73,4 +75,5 @@ export {
   MAX_SCORE,
   scoreToLevel,
   isScrolledIntoView,
+  LEVEL_LOAD_TIME,
 };

@@ -27,7 +27,10 @@ const PopUp = ({ popupShow, popupMessage, closePopup, scoreAtLoss }) => {
               ? " hovering your cursor over it"
               : " scrolling it into view"}
             . The maximum score you can get is{" "}
-            <span className="frostbite-color">{MAX_SCORE}</span>.
+            <span className="frostbite-color">{MAX_SCORE}</span>.{" "}
+            <span className="yellow-color">
+              And turn on the volume, you won't regret it.{" "}
+            </span>
           </p>
           <p>
             Excited? You should be. It's an amazing game, very well-rated by

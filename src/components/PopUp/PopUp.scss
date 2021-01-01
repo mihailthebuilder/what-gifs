@@ -54,6 +54,10 @@
   color: $frostbite;
 }
 
+.yellow-color {
+  color: $orange-yellow;
+}
+
 @media (max-width: $tablet-screen) {
   .popup-wrapper {
     button {

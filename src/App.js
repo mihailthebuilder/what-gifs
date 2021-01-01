@@ -1,5 +1,5 @@
 import "./App.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   CARD_DECK,
@@ -17,105 +17,117 @@ import GifContainer from "./components/GifContainer";
 import PopUp from "./components/PopUp";
 
 const App = () => {
+  //current score, best score & level
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [scoreAtLoss, setScoreAtLoss] = useState(0);
-
   const [level, setLevel] = useState(1);
 
-  useEffect(() => {
-    setLevel(scoreToLevel(currentScore, levelToCardNum));
-  }, [currentScore]);
-
+  //used to trigger what elements to show
+  const [cardsVisible, setCardsVisible] = useState(false);
   const [levelLoadingVisible, setLevelLoadingVisible] = useState(false);
+  const [popupVisible, setPopupVisible] = useState(true);
 
+  //message that will be used in the popup
+  const [popupMessage, setPopupMessage] = useState("how");
+
+  //current cards **and the order they are in**. latter is important because you can shuffle these cards
   const [currentCards, setCurrentCards] = useState(
     pickCards(levelToCardNum(level), CARD_DECK)
   );
-  useEffect(() => {
-    if (level > 1) {
-      setCardsVisible(false);
-      setLevelLoadingVisible(true);
-      setTimeout(() => {
-        console.log("started waiting");
-        setLevelLoadingVisible(false);
-        setCardsVisible(true);
-      }, LEVEL_LOAD_TIME);
-    }
-    setCurrentCards(pickCards(levelToCardNum(level), CARD_DECK));
-    setSelectedCards([]);
-    console.log("went past waiting");
-  }, [level]);
-
+  //cards that were already selected in the level
   const [selectedCards, setSelectedCards] = useState([]);
 
-  const [cardsVisible, setCardsVisible] = useState(false);
+  //indicates whether at start of game
+  const [gameStart, setGameStart] = useState(true);
 
-  const checkAnswer = (event) => {
-    let cardId = event.target.closest(".card-wrapper").id;
+  //NOT SURE ABOUT THIS
+  const [scoreAtLoss, setScoreAtLoss] = useState(0);
 
-    if (selectedCards.includes(cardId)) {
-      if (currentScore > bestScore) {
-        setBestScore(currentScore);
-      }
-      setScoreAtLoss(currentScore);
-      setPopupMessage("loss");
-      setPopupShow(true);
-      setCardsVisible(false);
+  const closePopup = () => {
+    setPopupVisible(false);
 
-      setCurrentScore(0);
-      setSelectedCards([]);
-      setCurrentCards(pickCards(levelToCardNum(level), CARD_DECK));
-    } else if (currentScore === MAX_SCORE - 1) {
-      //I don't need to reset cards selected her because the level useEffect will reset it anyway
-      setBestScore(MAX_SCORE);
-      setCurrentScore(0);
-      setPopupMessage("max");
-      setPopupShow(true);
-      setCardsVisible(false);
-    } else {
-      setCardsVisible(false);
-      setCurrentScore((previousScore) => previousScore + 1);
-      setSelectedCards((previousArray) => previousArray.concat(cardId));
-      setCurrentCards((previousCards) => shuffleCards(previousCards));
-      setTimeout(() => setCardsVisible(true), 200);
-    }
-  };
-
-  const [popupShow, setPopupShow] = useState(true);
-  const [popupMessage, setPopupMessage] = useState("how");
-
-  const togglePopup = () => {
-    setPopupShow((previousValue) => !previousValue);
-    if (!gameStart) {
-      setCardsVisible((previousValue) => !previousValue);
-    } else {
+    if (gameStart) {
       setLevelLoadingVisible(true);
       setTimeout(() => {
         setLevelLoadingVisible(false);
         setCardsVisible(true);
         setGameStart(false);
+        setCurrentCards(pickCards(levelToCardNum(1), CARD_DECK));
       }, LEVEL_LOAD_TIME);
+    } else {
+      setCardsVisible(true);
     }
   };
 
   const howPopupShow = () => {
     setPopupMessage("how");
-    togglePopup();
+    setCardsVisible(false);
+    setPopupVisible(true);
+  };
+
+  const checkAnswer = (event) => {
+    let cardId = event.target.closest(".card-wrapper").id;
+    setCardsVisible(false);
+
+    /* 3 scenarios: incorrect card picked, correct cards picked, max level reached
+     */
+    if (selectedCards.includes(cardId)) {
+      setPopupMessage("loss");
+      setScoreAtLoss(currentScore);
+      setPopupVisible(true);
+
+      if (currentScore > bestScore) {
+        setBestScore(currentScore);
+      }
+
+      setCurrentScore(0);
+      setSelectedCards([]);
+      setLevel(1);
+      setGameStart(true);
+      //
+    } else if (currentScore === MAX_SCORE - 1) {
+      setPopupMessage("max");
+      setPopupVisible(true);
+
+      setBestScore(MAX_SCORE);
+
+      setCurrentScore(0);
+      setSelectedCards([]);
+      setLevel(1);
+      setGameStart(true);
+      //
+    } else {
+      if (scoreToLevel(currentScore + 1, levelToCardNum) > level) {
+        setSelectedCards([]);
+        setLevelLoadingVisible(true);
+        setLevel((previousValue) => previousValue + 1);
+
+        setTimeout(() => {
+          setLevelLoadingVisible(false);
+          setCurrentCards(pickCards(levelToCardNum(level + 1), CARD_DECK));
+          setCardsVisible(true);
+        }, LEVEL_LOAD_TIME);
+        //
+      } else {
+        setSelectedCards((previousArray) => previousArray.concat(cardId));
+        setCurrentCards((previousCards) => shuffleCards(previousCards));
+        setTimeout(() => setCardsVisible(true), 200);
+      }
+      //
+      setCurrentScore((previousScore) => previousScore + 1);
+    }
   };
 
   const cheat = () => {
     setCurrentScore(MAX_SCORE - 1);
   };
 
-  const [gameStart, setGameStart] = useState(true);
-
   return (
     <div>
       <PopUp
-        popupShow={popupShow}
+        popupShow={popupVisible}
         popupMessage={popupMessage}
-        closeButton={togglePopup}
+        closePopup={closePopup}
         scoreAtLoss={scoreAtLoss}
       />
       <NavBar howPopupShow={howPopupShow} />

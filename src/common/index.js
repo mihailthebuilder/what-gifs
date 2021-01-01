@@ -65,7 +65,7 @@ const isScrolledIntoView = (el) => {
   return isVisible;
 };
 
-const LEVEL_LOAD_TIME = 2000;
+const LEVEL_LOAD_TIME = 1500;
 
 export {
   CARD_DECK,

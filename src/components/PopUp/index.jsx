@@ -2,7 +2,7 @@ import "./PopUp.scss";
 
 import { MAX_SCORE } from "../../common/index.js";
 
-const PopUp = ({ popupShow, popupMessage, closeButton, scoreAtLoss }) => {
+const PopUp = ({ popupShow, popupMessage, closePopup, scoreAtLoss }) => {
   let popBackgClass = "popup-background";
   if (popupShow) {
     popBackgClass += " show";
@@ -93,7 +93,7 @@ const PopUp = ({ popupShow, popupMessage, closeButton, scoreAtLoss }) => {
       <div className="popup-wrapper">
         <div className="popup-title font-size-large">{popupTitle}</div>
         {popupContent}
-        <button className="font-size-regular" onClick={closeButton}>
+        <button className="font-size-regular" onClick={closePopup}>
           {popupButtonText}
         </button>
       </div>

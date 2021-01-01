@@ -16,6 +16,8 @@ import GameData from "./components/GameData";
 import GifContainer from "./components/GifContainer";
 import PopUp from "./components/PopUp";
 
+import LoadingGif from "./LoadingGif.webp";
+
 const App = () => {
   //current score, best score & level
   const [currentScore, setCurrentScore] = useState(0);
@@ -98,9 +100,9 @@ const App = () => {
       //
     } else {
       if (scoreToLevel(currentScore + 1, levelToCardNum) > level) {
+        setLevel((previousValue) => previousValue + 1);
         setSelectedCards([]);
         setLevelLoadingVisible(true);
-        setLevel((previousValue) => previousValue + 1);
 
         setTimeout(() => {
           setLevelLoadingVisible(false);
@@ -151,7 +153,12 @@ const App = () => {
           ))}
         </div>
       )}
-      {levelLoadingVisible && <div>Loading</div>}
+      {levelLoadingVisible && (
+        <div className="level-load-wrapper">
+          <h1>Loading level {level}</h1>
+          <img src={LoadingGif} alt="Loading GIF" />
+        </div>
+      )}
     </div>
   );
 };

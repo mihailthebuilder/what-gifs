@@ -1,21 +1,25 @@
 {
   "files": {
-    "main.css": "/what-gifs/static/css/main.786303b7.chunk.css",
-    "main.js": "/what-gifs/static/js/main.e698815d.chunk.js",
-    "main.js.map": "/what-gifs/static/js/main.e698815d.chunk.js.map",
+    "main.css": "/what-gifs/static/css/main.3f76f868.chunk.css",
+    "main.js": "/what-gifs/static/js/main.edac3587.chunk.js",
+    "main.js.map": "/what-gifs/static/js/main.edac3587.chunk.js.map",
     "runtime-main.js": "/what-gifs/static/js/runtime-main.a4bc737a.js",
     "runtime-main.js.map": "/what-gifs/static/js/runtime-main.a4bc737a.js.map",
     "static/js/2.0ed756c2.chunk.js": "/what-gifs/static/js/2.0ed756c2.chunk.js",
     "static/js/2.0ed756c2.chunk.js.map": "/what-gifs/static/js/2.0ed756c2.chunk.js.map",
     "index.html": "/what-gifs/index.html",
-    "static/css/main.786303b7.chunk.css.map": "/what-gifs/static/css/main.786303b7.chunk.css.map",
+    "static/css/main.3f76f868.chunk.css.map": "/what-gifs/static/css/main.3f76f868.chunk.css.map",
     "static/js/2.0ed756c2.chunk.js.LICENSE.txt": "/what-gifs/static/js/2.0ed756c2.chunk.js.LICENSE.txt",
+    "static/media/EndGame.23748a52.mp3": "/what-gifs/static/media/EndGame.23748a52.mp3",
+    "static/media/LoadingGif.a5e842b6.webp": "/what-gifs/static/media/LoadingGif.a5e842b6.webp",
+    "static/media/RightAnswer.78b60bdb.mp3": "/what-gifs/static/media/RightAnswer.78b60bdb.mp3",
+    "static/media/WrongAnswer.f1da6b43.mp3": "/what-gifs/static/media/WrongAnswer.f1da6b43.mp3",
     "static/media/cat.f1560a6c.png": "/what-gifs/static/media/cat.f1560a6c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.a4bc737a.js",
     "static/js/2.0ed756c2.chunk.js",
-    "static/css/main.786303b7.chunk.css",
-    "static/js/main.e698815d.chunk.js"
+    "static/css/main.3f76f868.chunk.css",
+    "static/js/main.edac3587.chunk.js"
   ]
 }

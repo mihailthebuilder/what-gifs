@@ -8,14 +8,35 @@
   justify-content: space-evenly;
 }
 
+.level-load-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vh;
+
+  h1 {
+    color: $carolina-blue;
+    cursor: default;
+  }
+}
+
 @media (max-width: $tablet-screen) {
   .gif-cards-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 
 @media (max-width: $mobile-screen) {
   .gif-cards-container {
+    display: block;
     padding: $mobile-horizontal-padding;
+  }
+
+  .level-load-wrapper {
+    margin: 8vh 2rem 0 2rem;
   }
 }

@@ -65,7 +65,9 @@ const isScrolledIntoView = (el) => {
   return isVisible;
 };
 
-const LEVEL_LOAD_TIME = 1500;
+const LEVEL_LOAD_TIME = 3000;
+
+const RESPONSIVE_THRESHOLD = 1366;
 
 export {
   CARD_DECK,
@@ -76,4 +78,5 @@ export {
   scoreToLevel,
   isScrolledIntoView,
   LEVEL_LOAD_TIME,
+  RESPONSIVE_THRESHOLD,
 };

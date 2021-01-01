@@ -1,13 +1,13 @@
 import "./PopUp.scss";
 
-import { MAX_SCORE } from "../../common/index.js";
+import { MAX_SCORE, RESPONSIVE_THRESHOLD } from "../../common/index.js";
 
 const PopUp = ({ popupShow, popupMessage, closePopup, scoreAtLoss }) => {
   let popBackgClass = "popup-background";
   if (popupShow) {
     popBackgClass += " show";
   }
-  let desktopWindow = window.innerWidth > 768;
+  let desktopWindow = window.innerWidth > RESPONSIVE_THRESHOLD;
 
   let [popupTitle, popupContent, popupButtonText] = ["", "", ""];
 

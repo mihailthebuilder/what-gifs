@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 
 import "./GifContainer.scss";
 
-import { isScrolledIntoView } from "../../common/index.js";
+import {
+  isScrolledIntoView,
+  RESPONSIVE_THRESHOLD,
+} from "../../common/index.js";
 
 const GifContainer = ({ source, title, checkAnswer }) => {
   useEffect(() => {
@@ -30,7 +33,7 @@ const GifContainer = ({ source, title, checkAnswer }) => {
       }
     };
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > RESPONSIVE_THRESHOLD) {
       cardWrapper.addEventListener("mouseenter", playGif);
       cardWrapper.addEventListener("mouseleave", stopPlayGif);
     } else {

@@ -29,9 +29,14 @@ const PopUp = ({ popupShow, popupMessage, closeButton, scoreAtLoss }) => {
             . The maximum score you can get is{" "}
             <span className="frostbite-color">{MAX_SCORE}</span>.
           </p>
+          <p>
+            Excited? You should be. It's an amazing game, very well-rated by
+            IGN. Made by a budding rock superstar developer. A once in a
+            lifetime opportunity.
+          </p>
         </div>
       );
-      popupButtonText = "Understood, now let me play the damn game!";
+      popupButtonText = "Shut up and just start the damn game!";
       break;
     case "max":
       popupTitle = "You beat the game!";
@@ -46,7 +51,8 @@ const PopUp = ({ popupShow, popupMessage, closeButton, scoreAtLoss }) => {
           <p>...why are you still reading? Bugger off.</p>
         </div>
       );
-      popupButtonText = "This is so addictive, let me play again!";
+      popupButtonText =
+        "This is so addictive, I want to play again from the start!";
       break;
     default:
       popupTitle = "You lost T_T";
@@ -79,7 +85,7 @@ const PopUp = ({ popupShow, popupMessage, closeButton, scoreAtLoss }) => {
           <p>Better luck next time I guess.</p>
         </div>
       );
-      popupButtonText = "Just stop talking and let me give it another shot!";
+      popupButtonText = "Let me give it another shot!";
   }
 
   return (

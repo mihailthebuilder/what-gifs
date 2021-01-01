@@ -1,5 +1,14 @@
 @import "../../common/resources.scss";
 
+@keyframes toggleIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .card-wrapper {
   background-color: $eerie-black;
   cursor: pointer;
@@ -7,6 +16,7 @@
   img {
     height: 15rem;
   }
+  animation: toggleIn 2s 1;
 }
 
 .yellow-font {

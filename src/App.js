@@ -36,6 +36,8 @@ const App = () => {
 
   const [selectedCards, setSelectedCards] = useState([]);
 
+  const [cardsVisible, setCardsVisible] = useState(false);
+
   const checkAnswer = (event) => {
     let cardId = event.target.closest(".card-wrapper").id;
 
@@ -46,6 +48,7 @@ const App = () => {
       setScoreAtLoss(currentScore);
       setPopupMessage("loss");
       setPopupShow(true);
+      setCardsVisible(false);
 
       setCurrentScore(0);
       setSelectedCards([]);
@@ -56,6 +59,7 @@ const App = () => {
       setCurrentScore(0);
       setPopupMessage("max");
       setPopupShow(true);
+      setCardsVisible(false);
     } else {
       setCurrentScore((previousScore) => previousScore + 1);
       setSelectedCards((previousArray) => previousArray.concat(cardId));
@@ -66,7 +70,10 @@ const App = () => {
   const [popupShow, setPopupShow] = useState(true);
   const [popupMessage, setPopupMessage] = useState("how");
 
-  const togglePopup = () => setPopupShow((previousValue) => !previousValue);
+  const togglePopup = () => {
+    setPopupShow((previousValue) => !previousValue);
+    setCardsVisible((previousValue) => !previousValue);
+  };
 
   const howPopupShow = () => {
     setPopupMessage("how");
@@ -94,16 +101,18 @@ const App = () => {
       <button className="font-size-regular" onClick={cheat}>
         Cheat
       </button>
-      <div className="gif-cards-container">
-        {currentCards.map((cardItem) => (
-          <GifContainer
-            key={cardItem.key}
-            source={cardItem.key}
-            title={cardItem.title}
-            checkAnswer={checkAnswer}
-          />
-        ))}
-      </div>
+      {cardsVisible && (
+        <div className="gif-cards-container">
+          {currentCards.map((cardItem) => (
+            <GifContainer
+              key={cardItem.key}
+              source={cardItem.key}
+              title={cardItem.title}
+              checkAnswer={checkAnswer}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

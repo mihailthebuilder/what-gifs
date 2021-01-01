@@ -53,18 +53,6 @@ const shuffleCards = (cards) => {
   return cards.sort(() => 0.5 - Math.random());
 };
 
-const isScrolledIntoView = (el) => {
-  const rect = el.getBoundingClientRect();
-  const elemTop = rect.top;
-  const elemBottom = rect.bottom;
-
-  // Only completely visible elements return true:
-  const isVisible = elemTop >= 0 && elemBottom <= window.innerHeight;
-  // Partially visible elements return true:
-  //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
-  return isVisible;
-};
-
 const LEVEL_LOAD_TIME = 3000;
 
 const RESPONSIVE_THRESHOLD = 1366;
@@ -76,7 +64,6 @@ export {
   shuffleCards,
   MAX_SCORE,
   scoreToLevel,
-  isScrolledIntoView,
   LEVEL_LOAD_TIME,
   RESPONSIVE_THRESHOLD,
 };

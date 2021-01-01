@@ -22,14 +22,12 @@ const PopUp = ({ popupShow, popupMessage, closePopup, scoreAtLoss }) => {
             {desktopWindow ? " click" : " tap"} the same GIF in a given level.
           </p>
           <p>
-            You can play the GIF by
-            {desktopWindow
-              ? " hovering your cursor over it"
-              : " scrolling it into view"}
-            . The maximum score you can get is{" "}
+            {desktopWindow &&
+              "You can play the GIF by hovering your cursor over it. "}
+            The maximum score you can get is{" "}
             <span className="frostbite-color">{MAX_SCORE}</span>.{" "}
             <span className="yellow-color">
-              And turn on the volume, you won't regret it.{" "}
+              And turn on the volume, you won't regret it.
             </span>
           </p>
           <p>

@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/what-gifs/static/css/main.3f76f868.chunk.css",
-    "main.js": "/what-gifs/static/js/main.7e8a307a.chunk.js",
-    "main.js.map": "/what-gifs/static/js/main.7e8a307a.chunk.js.map",
+    "main.css": "/what-gifs/static/css/main.dce12c07.chunk.css",
+    "main.js": "/what-gifs/static/js/main.033eb404.chunk.js",
+    "main.js.map": "/what-gifs/static/js/main.033eb404.chunk.js.map",
     "runtime-main.js": "/what-gifs/static/js/runtime-main.a4bc737a.js",
     "runtime-main.js.map": "/what-gifs/static/js/runtime-main.a4bc737a.js.map",
     "static/js/2.0ed756c2.chunk.js": "/what-gifs/static/js/2.0ed756c2.chunk.js",
     "static/js/2.0ed756c2.chunk.js.map": "/what-gifs/static/js/2.0ed756c2.chunk.js.map",
     "index.html": "/what-gifs/index.html",
-    "static/css/main.3f76f868.chunk.css.map": "/what-gifs/static/css/main.3f76f868.chunk.css.map",
+    "static/css/main.dce12c07.chunk.css.map": "/what-gifs/static/css/main.dce12c07.chunk.css.map",
     "static/js/2.0ed756c2.chunk.js.LICENSE.txt": "/what-gifs/static/js/2.0ed756c2.chunk.js.LICENSE.txt",
     "static/media/EndGame.23748a52.mp3": "/what-gifs/static/media/EndGame.23748a52.mp3",
     "static/media/LoadingGif.a5e842b6.webp": "/what-gifs/static/media/LoadingGif.a5e842b6.webp",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.a4bc737a.js",
     "static/js/2.0ed756c2.chunk.js",
-    "static/css/main.3f76f868.chunk.css",
-    "static/js/main.7e8a307a.chunk.js"
+    "static/css/main.dce12c07.chunk.css",
+    "static/js/main.033eb404.chunk.js"
   ]
 }

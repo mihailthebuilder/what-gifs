@@ -17,10 +17,13 @@ const CARD_DECK = [
   new CardItem("office", "The Office Get Out"),
 ];
 
+//converts a level value to the number of cards used in that level
 const levelToCardNum = (level) => {
   return level * 2 + 1;
 };
 
+/*converts a score to a level number, need to input the function that is used to 
+calculate the # of cards in the level*/
 const scoreToLevel = (score, levelToNum) => {
   let level = 0;
   let scoreAtLevel = 0;
@@ -31,6 +34,7 @@ const scoreToLevel = (score, levelToNum) => {
   return level;
 };
 
+//calculates the max score possible given a card deck and the function used to calculate # of cards in the level
 const getMaxScore = (cardDeck, levelToNum) => {
   let sum = 0;
   for (let i = 1; levelToNum(i) <= cardDeck.length; i++) {
@@ -42,6 +46,7 @@ const getMaxScore = (cardDeck, levelToNum) => {
 
 const MAX_SCORE = getMaxScore(CARD_DECK, levelToCardNum);
 
+//randomly pickes cardNum number of cards from the cardDeck
 const pickCards = (cardNum, cardDeck) => {
   return cardDeck
     .slice()
@@ -49,6 +54,7 @@ const pickCards = (cardNum, cardDeck) => {
     .slice(0, cardNum);
 };
 
+//reshuffles cards
 const shuffleCards = (cards) => {
   return cards.sort(() => 0.5 - Math.random());
 };

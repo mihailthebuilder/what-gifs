@@ -9,6 +9,7 @@ const GifContainer = ({ source, title, checkAnswer }) => {
     const cardWrapper = document.getElementById(source);
 
     const playGif = () => {
+      //the GIFs are placed in the public folder because they're dynamically loaded one by one, not all at once
       cardWrapper.querySelector(
         "img"
       ).src = `${process.env.PUBLIC_URL}/gifs/original/${source}.gif`;
@@ -22,6 +23,7 @@ const GifContainer = ({ source, title, checkAnswer }) => {
       cardWrapper.classList.remove("yellow-font");
     };
 
+    //if desktop, only play GIF on hover, otherwise always play it
     if (window.innerWidth > RESPONSIVE_THRESHOLD) {
       cardWrapper.addEventListener("mouseenter", playGif);
       cardWrapper.addEventListener("mouseleave", stopPlayGif);
@@ -30,8 +32,10 @@ const GifContainer = ({ source, title, checkAnswer }) => {
     }
 
     return () => {
-      cardWrapper.removeEventListener("mouseenter", playGif);
-      cardWrapper.removeEventListener("mouseleave", stopPlayGif);
+      if (window.innerWidth > RESPONSIVE_THRESHOLD) {
+        cardWrapper.removeEventListener("mouseenter", playGif);
+        cardWrapper.removeEventListener("mouseleave", stopPlayGif);
+      }
     };
   }, [source]);
 

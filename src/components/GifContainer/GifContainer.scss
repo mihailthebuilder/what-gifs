@@ -1,5 +1,6 @@
 @import "../../common/resources.scss";
 
+//sets the fade in transition of the GIFs
 @keyframes toggleIn {
   0% {
     opacity: 0;
@@ -16,6 +17,7 @@
   img {
     height: 15rem;
   }
+  //sets the fade in transition of the GIFs
   animation: toggleIn 1s 1;
 }
 

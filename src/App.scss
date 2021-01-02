@@ -3,6 +3,7 @@
 .gif-cards-container {
   padding: $desktop-horizontal-padding;
 
+  //spaces GIFs evenly and allows to go on next row
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

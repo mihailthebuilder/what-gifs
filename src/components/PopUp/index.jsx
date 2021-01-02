@@ -4,6 +4,8 @@ import { MAX_SCORE, RESPONSIVE_THRESHOLD } from "../../common/index.js";
 
 const PopUp = ({ popupShow, popupMessage, closePopup, scoreAtLoss }) => {
   let popBackgClass = "popup-background";
+
+  //the show class sets the visibility of the popup
   if (popupShow) {
     popBackgClass += " show";
   }

@@ -34,6 +34,7 @@ const App = () => {
   const [popupVisible, setPopupVisible] = useState(true);
 
   //message that will be used in the popup
+  //starts with "how" value because the game will start with the "how this works" popup
   const [popupMessage, setPopupMessage] = useState("how");
 
   //current cards **and the order they are in**. latter is important because you can shuffle these cards
@@ -46,14 +47,17 @@ const App = () => {
   //indicates whether at start of game
   const [gameStart, setGameStart] = useState(true);
 
-  //NOT SURE ABOUT THIS
+  //holds the score when the popup for incorrect answer comes up (currentScore goes to 0 in the meantime)
   const [scoreAtLoss, setScoreAtLoss] = useState(0);
 
+  //trigger for button close in popup modal
   const closePopup = () => {
     setPopupVisible(false);
 
+    //if at the start of the game, show the loading image for level 1 with a LEVEL_LOAD_TIME duration instead of showing the cards
     if (gameStart) {
       setLevelLoadingVisible(true);
+
       setTimeout(() => {
         setLevelLoadingVisible(false);
         setCardsVisible(true);
@@ -65,17 +69,19 @@ const App = () => {
     }
   };
 
+  //trigger for popup to show with the "how this works message"
   const howPopupShow = () => {
     setPopupMessage("how");
     setCardsVisible(false);
     setPopupVisible(true);
   };
 
+  //checks whether we've clicked on a valid card
   const checkAnswer = (event) => {
     let cardId = event.target.closest(".card-wrapper").id;
     setCardsVisible(false);
 
-    /* 3 scenarios: incorrect card picked, correct cards picked, max level reached
+    /* 3 scenarios...1)incorrect card picked...
      */
     if (selectedCards.includes(cardId)) {
       playSound(WrongAnswerSound);
@@ -91,7 +97,7 @@ const App = () => {
       setSelectedCards([]);
       setLevel(1);
       setGameStart(true);
-      //
+      //...2) correct card picked and max score reached...
     } else if (currentScore === MAX_SCORE - 1) {
       playSound(EndGameSound);
       setPopupMessage("max");
@@ -103,7 +109,7 @@ const App = () => {
       setSelectedCards([]);
       setLevel(1);
       setGameStart(true);
-      //
+      //...3) correct card picked and max score not reached
     } else {
       playSound(RightAnswerSound);
       if (scoreToLevel(currentScore + 1, levelToCardNum) > level) {
@@ -111,6 +117,7 @@ const App = () => {
         setSelectedCards([]);
         setLevelLoadingVisible(true);
 
+        //show the level loading screen
         setTimeout(() => {
           setLevelLoadingVisible(false);
           setCurrentCards(pickCards(levelToCardNum(level + 1), CARD_DECK));
@@ -146,6 +153,7 @@ const App = () => {
         currentScore={currentScore}
         bestScore={bestScore}
       />
+      {/*GIFs container section */}
       {cardsVisible && (
         <div className="gif-cards-container">
           {currentCards.map((cardItem) => (
@@ -158,6 +166,7 @@ const App = () => {
           ))}
         </div>
       )}
+      {/*the level loading screen */}
       {levelLoadingVisible && (
         <div className="level-load-wrapper">
           <h1>Loading level {level}</h1>

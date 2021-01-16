@@ -10,7 +10,7 @@ Built with React Hooks, What GIFs is a multi-level memory game where you have to
 
 The game starts with a full-screen pop-up modal that shows the instructions of the game.
 
-![instructions](./demo/instructions.png)
+![instructions](./demo/intro.png)
 
 When you click to start the game, a loading GIF gets shown first, then 3 GIFs appear on the screen.
 

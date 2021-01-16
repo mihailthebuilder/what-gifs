@@ -145,7 +145,7 @@ const GifContainer = ({ source, title, checkAnswer }) => {
 };
 ```
 
-There are 2 sub-folders in [gfs](./public/gifs):
+There are 2 sub-folders in [gifs](./public/gifs):
 
 1. [original](./public/gifs/original) has the actual GIF files.
 2. [images](./public/gifs/images) has an image representing the first scene of each GIF. These images are first rendered on desktop screens; it is only when you hover on the image that the GIF is actually played by switching the `src` of the `img` element to the corresponding file in the `original` folder.

@@ -1,5 +1,9 @@
-## Table of Contents
+# What GIFs
 
+# Table of Contents
+
+- [What GIFs](#what-gifs)
+- [Table of Contents](#table-of-contents)
 - [Overview](#overview)
 - [How it works](#how-it-works)
 - [Technical details](#technical-details)

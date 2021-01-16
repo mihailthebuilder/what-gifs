@@ -2,19 +2,43 @@
 
 ## Overview
 
-Built with React Hooks, What GIFs is a multi-level memory game where you have to avoid picking the same GIF in a given level. Live demo : https://mihailthebuilder.github.io/what-gifs/
+Built with React Hooks, What GIFs is a multi-level memory game where you have to avoid picking the same GIF in a given level. [Live demo](https://mihailthebuilder.github.io/what-gifs/)
+
+**Note:** It's my magnum opus. And don't forget to turn on the volume.
 
 ## How it works
 
-The game starts with a full-screen pop-up modal that shows the instructions of the game. These instructions can be accessed even after you start by clicking the "How it works" button on the top right corner of the screen.
+The game starts with a full-screen pop-up modal that shows the instructions of the game.
 
-The game has 5 levels. In each level, you are given a list of GIFs and you have to avoid picking the same GIF in that level.
+![instructions](./demo/instructions.png)
 
-When you pick correctly, your score increments by 1 and a funny sound is played. The GIFs are then temporarily hidden and their order reshuffled to make it harder to remember which ones you already selected. Once you get all the cards right, a loading screen gets shown for a few seconds and you advance to the next level.
+When you click to start the game, a loading GIF gets shown first, then 3 GIFs appear on the screen.
+
+![first load](./demo/first-load.gif)
+
+When the screen width is smaller than 1366px, as is the case in the image above, all the GIFs play continuously as soon as they are rendered. For screen widths greater than 1366px, the GIFs only start playing when the cursor is hovered over the element.
+
+![hover play](./demo/hover-play.gif)
+
+The game has 5 levels. In each level, you are given a list of GIFs and you have to avoid picking the same GIF in that level. When you pick correctly, your score increments by 1 and a funny sound is played. The GIFs are then temporarily hidden and their order reshuffled to make it harder to remember which ones you already selected.
+
+![correct](./demo/correct.gif)
+
+Once you get all the cards right in a given level, a loading screen gets shown for a few seconds and you advance to the next level.
+
+![next level](./demo/next-level.gif)
 
 If you pick the same card twice in a single level, another funny sound is played and a pop-up appears saying that you lost the game and showing the score you managed to achieve. If this score is better than your best score, the latter will take the value of the former at the start of the next game.
 
+![wrong answer](./demo/wrong-answer.gif)
+
 There is a maximum score threshold which, once reached, triggers a pop-up stating that you've won the game together with a 3rd funny sound. You can then choose to re-start the game, with your best score becoming that maximum score.
+
+_This is the part where I'd demo the feature, but I refuse to do so to convince you to complete the game...or to figure it out from the codebase ;)_
+
+During the game, you can access the instructions shown at the start by clicking the "How it works" button on the top right corner of the screen.
+
+![instructions](./demo/instructions.gif)
 
 ## Technical details
 

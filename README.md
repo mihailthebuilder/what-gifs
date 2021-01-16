@@ -127,7 +127,7 @@ The web app features 4 components:
 
 ## GIF loading
 
-The GIF files have been placed in the [public](./public) folder as they aren't loaded together with the production code. Instead, each GIF is loaded only when it's needed in the game using the [GifContainer](./src/components/GifContainer/index.jsx) component:
+The GIF files have been placed in the [public/gifs](./public/gifs) folder as they aren't loaded together with the production code. Instead, each GIF is loaded only when it's needed in the game using the [GifContainer](./src/components/GifContainer/index.jsx) component:
 
 ```jsx
 const GifContainer = ({ source, title, checkAnswer }) => {
@@ -145,10 +145,10 @@ const GifContainer = ({ source, title, checkAnswer }) => {
 };
 ```
 
-There are 2 sub-folders in [public](./public):
+There are 2 sub-folders in [gfs](./public/gifs):
 
-1. [original](./public/original) has the actual GIF files.
-2. [images](./public/images) has an image representing the first scene of each GIF. These images are first rendered on desktop screens; it is only when you hover on the image that the GIF is actually played by switching the `src` of the `img` element to the corresponding file in the `original` folder.
+1. [original](./public/gifs/original) has the actual GIF files.
+2. [images](./public/gifs/images) has an image representing the first scene of each GIF. These images are first rendered on desktop screens; it is only when you hover on the image that the GIF is actually played by switching the `src` of the `img` element to the corresponding file in the `original` folder.
 
 ```jsx
 const GifContainer = ({ source, title, checkAnswer }) => {
@@ -235,4 +235,4 @@ const scoreToLevel = (score, levelToNum) => {
 };
 ```
 
-You can also add more GIFs in the [public](./public) folder and expand the `CARD_DECK` constant ([see here](#gif-loading)) to allow for more cards, rounds and levels.
+You can also add more GIFs in the [gifs](./public/gifs) folder and expand the `CARD_DECK` constant ([see here](#gif-loading)) to allow for more cards, rounds and levels.

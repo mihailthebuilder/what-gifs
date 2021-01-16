@@ -13,7 +13,7 @@ Built with React Hooks, What GIFs is a multi-level memory game where you have to
   - [State management](#state-management)
   - [Component Setup](#component-setup)
   - [GIF loading](#gif-loading)
-  - [Responsive design](#responsive-design)
+  - [Game modifying](#game-modifying)
 
 # How it works
 
@@ -28,6 +28,8 @@ When you click to start the game, a loading GIF gets shown first, then 3 GIFs ap
 When the screen width is smaller than 1366px, as is the case in the image above, all the GIFs play continuously as soon as they are rendered. For screen widths greater than 1366px, the GIFs only start playing when the cursor is hovered over the element.
 
 ![hover play](./demo/hover-play.gif)
+
+This threshold value represents the width of an iPad Pro screen. The reason it was chosen was because you obviously don't have a cursor for tablets and mobile devices.
 
 The game has 5 levels. In each level, you are given a list of GIFs and you have to avoid picking the same GIF in that level. When you pick correctly, your score increments by 1 and a funny sound is played. The GIFs are then temporarily hidden and their order reshuffled to make it harder to remember which ones you already selected.
 
@@ -206,6 +208,31 @@ const CARD_DECK = [
 ];
 ```
 
-The number of rounds/levels can be easily modified by changing the `levelToCardNum` function in `src/common/index.js`. The app has been built in a way that avoids it being broken by this particular change. You can also add more GIFs and expand the `CARD_DECK` constant to allow for more rounds and levels.
+## Game modifying
 
-## Responsive design
+The number of rounds/levels can be easily modified by changing the `levelToCardNum` function in [common/index.js](./src/common/index.js):
+
+```js
+//converts a level value to the number of cards used in that level
+const levelToCardNum = (level) => {
+  return level * 2 + 1;
+};
+```
+
+This function specifies how many cards should be shown in a given level. The function is then used wherever a level-dependant calculation is made. An example from [common/index.js](./src/common/index.js):
+
+```js
+/*converts a score to a level number, need to input the function that is used to 
+calculate the # of cards in the level*/
+const scoreToLevel = (score, levelToNum) => {
+  let level = 0;
+  let scoreAtLevel = 0;
+  while (scoreAtLevel <= score) {
+    level++;
+    scoreAtLevel += levelToNum(level);
+  }
+  return level;
+};
+```
+
+You can also add more GIFs in the [public](./public) folder and expand the `CARD_DECK` constant ([see here](#gif-loading)) to allow for more cards, rounds and levels.

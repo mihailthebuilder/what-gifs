@@ -1,12 +1,20 @@
-# What GIFs
+## Table of Contents
 
-## Overview
+- [Overview](#overview)
+- [How it works](#how-it-works)
+- [Technical details](#technical-details)
+  - [State management](#state-management)
+  - [Component Setup](#component-setup)
+  - [GIF loading](#gif-loading)
+  - [Responsive design](#responsive-design)
+
+# Overview
 
 Built with React Hooks, What GIFs is a multi-level memory game where you have to avoid picking the same GIF in a given level. [Live demo](https://mihailthebuilder.github.io/what-gifs/)
 
 **Note:** It's my magnum opus. And don't forget to turn on the volume.
 
-## How it works
+# How it works
 
 The game starts with a full-screen pop-up modal that shows the instructions of the game.
 
@@ -40,9 +48,9 @@ During the game, you can access the instructions shown at the start by clicking 
 
 ![instructions](./demo/instructions.gif)
 
-## Technical details
+# Technical details
 
-### State management
+## State management
 
 The game is built using React Hooks, with all states being managed in [App.js](./src/App.js). I avoided applying `useEffect` in here because none of the state changes trigger a standard response. A good example can be found in the `checkAnswer` function, also in [App.js](./src/App.js), which checks whether the GIF selected is a correct answer:
 
@@ -99,7 +107,7 @@ const checkAnswer = (event) => {
 
 You can see that the same change in the `currentScore` state - an increment of 1 - can lead to totally different state changes.
 
-### Component Setup
+## Component Setup
 
 The web app features 4 components:
 
@@ -114,7 +122,7 @@ The web app features 4 components:
 3. [GifContainer](./src/components/GifContainer) - the wrapper for an individual GIF together with its title
 4. [GameData](./src/components/GameData) - a section that renders the current & best score, and the level
 
-### GIF loading
+## GIF loading
 
 The GIF files have been placed in the [public](./public) folder as they aren't loaded together with the production code. Instead, each GIF is loaded only when it's needed in the game using the [GifContainer](./src/components/GifContainer/index.jsx) component:
 
@@ -197,8 +205,6 @@ const CARD_DECK = [
 ];
 ```
 
-### Modifying the game
-
 The number of rounds/levels can be easily modified by changing the `levelToCardNum` function in `src/common/index.js`. The app has been built in a way that avoids it being broken by this particular change. You can also add more GIFs and expand the `CARD_DECK` constant to allow for more rounds and levels.
 
-### Responsive design
+## Responsive design

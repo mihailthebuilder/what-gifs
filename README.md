@@ -1,22 +1,19 @@
 # What GIFs
 
+Built with React Hooks, What GIFs is a multi-level memory game where you have to avoid picking the same GIF in a given level. [Live demo](https://mihailthebuilder.github.io/what-gifs/)
+
+**Note:** It's my magnum opus. And don't forget to turn on the volume.
+
 # Table of Contents
 
 - [What GIFs](#what-gifs)
 - [Table of Contents](#table-of-contents)
-- [Overview](#overview)
 - [How it works](#how-it-works)
 - [Technical details](#technical-details)
   - [State management](#state-management)
   - [Component Setup](#component-setup)
   - [GIF loading](#gif-loading)
   - [Responsive design](#responsive-design)
-
-# Overview
-
-Built with React Hooks, What GIFs is a multi-level memory game where you have to avoid picking the same GIF in a given level. [Live demo](https://mihailthebuilder.github.io/what-gifs/)
-
-**Note:** It's my magnum opus. And don't forget to turn on the volume.
 
 # How it works
 
